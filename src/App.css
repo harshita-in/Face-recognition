@@ -1,38 +1,116 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app-container {
   min-height: 100vh;
+  background-color: #0d1117;
+  color: #c9d1d9;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.app-header {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  animation: slideDown 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(-20px);
 }
 
-@keyframes App-logo-spin {
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(90deg, #58a6ff, #1f6feb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.app-subtitle {
+  font-size: 1.1rem;
+  color: #8b949e;
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+.camera-wrapper {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  border-radius: 16px;
+  background-color: #161b22;
+  box-shadow: 0 0 0 1px rgba(240, 246, 252, 0.1), 0 24px 48px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1.2s ease-in forwards;
+  opacity: 0;
+}
+
+.camera-frame {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 18px;
+  background: linear-gradient(45deg, #1f6feb, #58a6ff);
+  z-index: 0;
+  animation: pulseGlow 3s infinite alternate;
+  opacity: 0.5;
+}
+
+.camera-feed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.camera-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.app-footer {
+  margin-top: auto;
+  padding: 2rem;
+  color: #8b949e;
+  font-size: 0.9rem;
+  animation: fadeIn 1.5s ease-in forwards;
+  opacity: 0;
+}
+
+/* Animations */
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulseGlow {
   from {
-    transform: rotate(0deg);
+    opacity: 0.3;
+    box-shadow: 0 0 10px rgba(31, 111, 235, 0.2);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 0.7;
+    box-shadow: 0 0 25px rgba(88, 166, 255, 0.5);
   }
 }
