@@ -17,10 +17,10 @@ function App() {
         runtime: "tfjs",
         refineLandmarks: true, // Adds detail for eyes and lips
       };
-      
+
       try {
         const detector = await faceLandmarksDetection.createDetector(model, detectorConfig);
-        
+
         // Run detection every 40ms (~25 FPS)
         intervalId = setInterval(() => {
           detect(detector);
@@ -58,7 +58,7 @@ function App() {
     const drawTrace = (faces, ctx) => {
       if (!canvasRef.current) return;
       ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-      
+
       if (faces.length > 0) {
         faces.forEach((face) => {
           const keypoints = face.keypoints;
@@ -92,10 +92,10 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1 className="app-title">Naina Vision</h1>
+        <h1 className="app-title">ML Based Face Detection</h1>
         <p className="app-subtitle">Real-Time Facial Landmark Analysis</p>
       </header>
-      
+
       <main className="camera-wrapper">
         <div className="camera-frame"></div>
         <Webcam
@@ -116,4 +116,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;
